@@ -1,0 +1,91 @@
+/* Typography */
+. {
+  @apply text-4xl font-bold leading-tight tracking-tight;
+}
+
+.h2 {
+  @apply text-3xl font-bold leading-tight tracking-tight;
+}
+
+.h3 {
+  @apply text-3xl font-bold leading-tight;
+}
+
+.h4 {
+  @apply text-2xl font-bold leading-snug tracking-tight;
+}
+
+@screen md {
+  .h1 {
+    @apply text-5xl;
+  }
+
+  .h2 {
+    @apply text-4xl;
+  }
+}
+
+/* Buttons */
+.btn,
+.btn-sm {
+  @apply inline-flex items-center justify-center rounded-sm border border-transparent font-medium leading-snug transition duration-150 ease-in-out;
+}
+
+.btn {
+  @apply px-8 py-3;
+}
+
+.btn-sm {
+  @apply px-4 py-2;
+}
+
+/* Forms */
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox,
+.form-radio {
+  @apply border border-gray-700 focus:border-gray-500;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox {
+  @apply rounded-sm;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select {
+  @apply px-4 py-3;
+}
+
+.form-input,
+.form-textarea {
+  @apply placeholder-gray-500;
+}
+
+.form-select {
+  @apply pr-10;
+}
+
+.form-checkbox,
+.form-radio {
+  @apply text-purple-600;
+}
+
+/* Can add more to this - currently made to serve signin/signup/reset-password pages */
+.form-input,
+.form-checkbox {
+  @apply focus:border-primary-400/20 focus:ring-primary-400/20 !important;
+}
+
+/* Changed the checkbox color to theme green */
+.form-checkbox {
+  @apply text-gray-700 !important;
+  @apply bg-gray-500/10;
+}
