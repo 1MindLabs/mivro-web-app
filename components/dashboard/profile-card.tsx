@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { User } from "@supabase/supabase-js";
-import Link from "next/link";
+import { FaUser, FaLink, FaCalendarAlt } from "react-icons/fa";
+import ProfileEditScreen from "@/components/dashboard/profile-edit-screen";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -7,44 +10,67 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 
 type ProfileCardProps = {
   user: User;
 };
 
 export default function ProfileCard({ user }: ProfileCardProps) {
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveChanges = () => {
+    setIsEditing(false);
+  };
+
+  if (isEditing) {
+    return <ProfileEditScreen user={user} onSaveChanges={handleSaveChanges} />;
+  }
+
   return (
-    <Card className="flex h-full flex-col overflow-auto bg-gray-100/10 p-6 text-card-foreground">
-      <CardHeader className="pb-4">
-        <CardTitle className="text-xl font-semibold">Profile</CardTitle>
-      </CardHeader>
-      <CardContent className="flex flex-grow space-x-4 pt-4">
-        <Avatar className="h-16 w-16">
-          <AvatarImage src={user.user_metadata.avatar_url} alt="User Avatar" />
-          <AvatarFallback>
-            {user?.user_metadata.name?.[0] || user?.email?.[0] || "U"}
-          </AvatarFallback>
-        </Avatar>
-        <div>
-          <p className="text-lg font-medium">
-            {user?.user_metadata.name || "User"}
-          </p>
-          <p className="text-muted-foreground">{user?.email}</p>
-        </div>
-      </CardContent>
-      <CardFooter className="mt-auto pt-4">
-        {user?.app_metadata.provider === "email" && (
+    <div className="space-y-6 flex flex-col">
+      <Card className="flex h-full flex-col overflow-auto bg-white p-6 shadow-md rounded-lg max-w-md">
+      <h2 className="text-2xl font-semibold mb-4 flex items-center justify-start">
+          <FaUser className="text-teal-500 mr-2" />
+          My Profile
+        </h2>
+        <CardContent className="pt-4">
+          <p className="text-lg">Hello, {user?.user_metadata.name || "User"}!</p>
+          <p className="text-gray-600">{user?.email}</p>
+        </CardContent>
+        <CardFooter className="mt-auto pt-4">
           <Button
-            variant="link"
-            asChild
-            className="ml-auto px-0 text-primary-800"
+            onClick={handleEditClick}
+            className="ml-auto mr-4 bg-teal-500 text-white rounded px-4 py-2 hover:bg-teal-600 transition duration-200"
           >
-            <Link href="/update-password">Update Password</Link>
+            Update Profile
           </Button>
-        )}
-      </CardFooter>
-    </Card>
+        </CardFooter>
+      </Card>
+
+
+      <Card className="bg-white p-6 shadow-md rounded-lg max-w-md">
+        <h2 className="text-2xl font-semibold mb-4 flex items-center justify-start">
+          <FaLink className="text-teal-500 mr-2" />
+          Connected Accounts
+        </h2>
+        <div className="space-y-3">
+          <p className="text-gray-500">No connected accounts.</p>
+        </div>
+      </Card>
+
+      <Card className="bg-white p-6 shadow-md rounded-lg max-w-md">
+        <h2 className="text-2xl font-semibold mb-4 flex items-center justify-start">
+          <FaCalendarAlt className="text-teal-500 mr-2" />
+          Member Since
+        </h2>
+        <p className="text-gray-600">
+          {user?.created_at ? new Date(user.created_at).toLocaleDateString() : "N/A"}
+        </p>
+      </Card>
+    </div>
   );
 }

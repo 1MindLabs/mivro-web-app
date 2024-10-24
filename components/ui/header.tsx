@@ -137,12 +137,18 @@ export default async function Header() {
                     <NavigationMenuList className="space-x-1">
                       <Navigation />
                       <DropdownNavItem trigger="Resources">
-                        <ul className="grid w-[200px] gap-3 bg-background p-4 md:w-[250px] md:grid-cols-1 lg:w-[300px]">
+                        <ul className="grid w-[400px] gap-3 bg-background p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                          <ListItem href="/about" title="About">
+                            Learn more about Mivro
+                          </ListItem>
+                          <ListItem href="/team" title="Team">
+                            Know about the people behind Mivro
+                          </ListItem>
                           <ListItem
                             href="https://docs.google.com/presentation/d/1mxhh5Z6-F71714eD62kbfIa_T-FQAd3bwUTcZmL84Do/edit?usp=sharing"
                             title="Documentation"
                           >
-                            Learn more about Mivro
+                            Read insights on Mivro&apos;s development
                           </ListItem>
 
                           <ListItem href="/changelog" title="Changelog">

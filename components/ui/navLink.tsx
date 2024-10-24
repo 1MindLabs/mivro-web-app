@@ -36,8 +36,7 @@ const NavLink: React.FC<NavLinkProps> = ({
 // Navigation component to render the list of navigation links
 const Navigation: React.FC = () => {
   const navLinks = [
-    { label: "About", path: "/about", isExternal: false },
-    { label: "Team", path: "/team", isExternal: false },
+    { label: "Marketplace", path: "/marketplace", isExternal: false },
   ];
 
   return (

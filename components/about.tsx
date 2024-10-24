@@ -16,6 +16,12 @@ const videoData: VideoData[] = [
     description:
       "A brief overview of the project, its features, and how it can help you make healthier choices in your daily life.",
   },
+  {
+    src: "https://youtube.com/embed/leefLeLr3n0?si=AmH6SoDybqLhmA_S",
+    title: "Project Presentation",
+    description:
+      "Our project presentation at DevHack, a hackathon held at DSU, where we showcased our solution, its development process, and its impact.",
+  },
 ];
 
 const AboutComponent: React.FC = () => {
@@ -121,14 +127,14 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, description }) => (
       className="flex flex-col-reverse p-4 sm:flex-col"
       style={{
         width: "100%",
-        maxWidth: "40rem",
-        minHeight: "28rem",
+        maxWidth: "30rem",
+        minHeight: "20rem",
       }}
     >
       <div
         className="relative mt-4 sm:mb-4 sm:mt-0"
         style={{
-          paddingBottom: "24rem",
+          paddingBottom: "16rem",
         }}
       >
         <iframe

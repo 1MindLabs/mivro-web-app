@@ -29,14 +29,14 @@ const Team: React.FC = () => {
             <Image
               src={TeamPhoto1}
               alt="Team 1"
-              className="mb-4 h-auto w-full rounded-lg"
+              className="mb-4 h-[280px] w-full rounded-lg object-cover"
             />
           </div>
           <div className="flex-1 text-center">
             <Image
               src={TeamPhoto2}
               alt="Team 2"
-              className="mb-4 h-auto w-full rounded-lg"
+              className="mb-4 h-[280px] w-full rounded-lg object-cover"
             />
           </div>
         </div>

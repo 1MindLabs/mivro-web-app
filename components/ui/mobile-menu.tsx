@@ -73,7 +73,7 @@ export default function MobileMenu({
         </SheetTrigger>
         <SheetContent
           side="right"
-          className="flex w-[300px] flex-col justify-between sm:w-[400px]"
+          className="flex w-[300px] flex-col justify-between sm:w-[400px] overflow-y-auto"
         >
           <div>
             <SheetHeader className="mb-4">
@@ -101,6 +101,15 @@ export default function MobileMenu({
                           {user.user_metadata.full_name || user.email}
                         </span>
                       </div>
+                      <Link href="/dashboard" onClick={() => setIsOpen(false)}>
+                        <Button
+                          variant="outline"
+                          className="w-full justify-start"
+                        >
+                          <LogIn className="mr-2 h-4 w-4" />
+                          Dashboard
+                        </Button>
+                      </Link>
                       <Button
                         variant="outline"
                         className="w-full justify-start"
@@ -139,17 +148,20 @@ export default function MobileMenu({
                 <MobileNavItem href="/" onClick={() => setIsOpen(false)}>
                   Home
                 </MobileNavItem>
-                <MobileNavItem href="/about" onClick={() => setIsOpen(false)}>
-                  About
-                </MobileNavItem>
-                <MobileNavItem href="/team" onClick={() => setIsOpen(false)}>
-                  Team
+                <MobileNavItem href="/marketplace" onClick={() => setIsOpen(false)}>
+                  Marketplace
                 </MobileNavItem>
                 <Accordion type="single" collapsible className="w-full">
                   <AccordionItem value="resources">
                     <AccordionTrigger>Resources</AccordionTrigger>
                     <AccordionContent>
                       <ul className="ml-4 space-y-1">
+                      <MobileNavItem href="/about" onClick={() => setIsOpen(false)}>
+                  About
+                </MobileNavItem>
+                <MobileNavItem href="/team" onClick={() => setIsOpen(false)}>
+                  Team
+                </MobileNavItem>
                         <MobileNavItem
                           href="https://docs.google.com/presentation/d/1mxhh5Z6-F71714eD62kbfIa_T-FQAd3bwUTcZmL84Do/edit?usp=sharing"
                           onClick={() => setIsOpen(false)}

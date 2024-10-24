@@ -38,7 +38,18 @@ export const updatePasswordSchema = z
     path: ["confirmPassword"],
   });
 
+  export const updateEmailSchema = z
+  .object({
+    email: z.string().email({ message: "Invalid email address." }),
+    confirmEmail: z.string().email({ message: "Invalid email address." }),
+  })
+  .refine((data) => data.email === data.confirmEmail, {
+    message: "Emails don't match",
+    path: ["confirmEmail"],
+  });
+
 export type SignUpFormData = z.infer<typeof signUpSchema>;
 export type SignInFormData = z.infer<typeof signInSchema>;
 export type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;
 export type UpdatePasswordFormData = z.infer<typeof updatePasswordSchema>;
+export type UpdateEmailFormData = z.infer<typeof updateEmailSchema>;

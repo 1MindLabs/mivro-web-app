@@ -10,7 +10,7 @@ import {
   User,
   Session,
 } from "@supabase/supabase-js";
-import { UpdatePasswordFormData } from "@/utils/form-schema";
+import { UpdatePasswordFormData,UpdateEmailFormData } from "@/utils/form-schema";
 import { getURL } from "@/lib/utils";
 
 export async function signin(
@@ -156,6 +156,19 @@ export async function updateUser(formData: UpdatePasswordFormData) {
   redirect("/dashboard");
 }
 
+export async function updateEmail(formData: UpdateEmailFormData) {
+  const supabase = createClient();
+
+  const { error } = await supabase.auth.updateUser({
+    email: formData.email,
+  });
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/", "layout");
+  redirect("/dashboard");
+}
 // Resend confirmation email
 export async function resendConfirmationEmail(email: string) {
   const supabase = createClient();
@@ -173,4 +186,21 @@ export async function resendConfirmationEmail(email: string) {
   }
 
   revalidatePath("/", "layout");
+}
+
+export async function updateUserProfile(formData: FormData) {
+  const supabase = createClient();
+
+  const { error } = await supabase.auth.updateUser({
+    data: {
+      name: formData.get("name") as string,
+    },
+  });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/", "layout");
+  redirect("/dashboard");
 }
