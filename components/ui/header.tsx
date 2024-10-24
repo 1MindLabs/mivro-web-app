@@ -16,7 +16,7 @@ import MobileMenu from "./mobile-menu";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import Navigation from "./navLink";
-import Search from "./search";
+// import Search from "./search";
 import AnalysisLogo from "@/public/images/analysis.png";
 import { createClient } from "@/utils/supabase/server";
 
@@ -161,7 +161,7 @@ export default async function Header() {
                 </nav>
               </div>
               <div className="hidden md:block ">
-                <Search />
+                {/* <Search /> */}
               </div>
               <div className="hidden items-center space-x-4 md:flex">
                 <AuthButton />
